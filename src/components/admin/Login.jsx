@@ -1,5 +1,4 @@
-import React, { useState } from "react";import { Modal } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";import { Modal } from "@mui/material";import { useNavigate } from "react-router-dom";
 
 const style = {
 	display: "flex",
@@ -27,7 +26,12 @@ function Login({ open, onClose }) {
 		<Modal
 			open={open}
 			onClose={onClose}
-			sx={style}>
+			sx={style}
+			BackdropProps={{
+				sx: {
+					backgroundColor: "rgba(0, 0, 0, 0.9)",
+				},
+			}}>
 			<div className="min-h-screen py-6 flex flex-col justify-center sm:py-12 z-[999999]">
 				<div className="relative py-3 sm:max-w-xl sm:mx-auto w-full">
 					<div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>

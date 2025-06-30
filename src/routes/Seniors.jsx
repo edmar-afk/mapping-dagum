@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";import api from "../assets/api";import AddSeniors from "../components/admin/AddSeniors";
+import React, { useEffect, useState } from "react";import api from "../assets/api";
+import AddSeniors from "../components/admin/AddSeniors";
+
 function Seniors() {
 	const [seniors, setSeniors] = useState([]);
 
@@ -26,59 +28,52 @@ function Seniors() {
 
 	return (
 		<section className="w-full">
-			<div className="my-4 flex flex-row items-center justify-between">
+			<div className="my-4 flex flex-row-reverse items-center justify-between">
 				<AddSeniors />
 				<p
 					onClick={fetchSeniors}
-					className="cursor-pointer text-blue-600 hover:underline">
+					className="cursor-pointer text-purple-600 hover:underline">
 					Refresh
 				</p>
 			</div>
-
-			<div className="mx-auto w-full">
-				<div className="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
-					<div className="overflow-x-auto">
-						<table className="w-full text-sm text-left text-gray-500">
-							<thead className="text-xs text-gray-700 uppercase bg-gray-50">
-								<tr>
-									<th className="px-4 py-3">Name</th>
-									<th className="px-4 py-3">Age</th>
-									<th className="px-4 py-3">Gender</th>
-									<th className="px-4 py-3">Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								{seniors.map((senior) => (
-									<tr
-										key={senior.id}
-										className="border-b">
-										<td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{senior.people}</td>
-										<td className="px-4 py-3">{senior.age}</td>
-										<td className="px-4 py-3">{senior.gender}</td>
-										<td className="px-4 py-3 flex items-center justify-start">
-											<button
-												type="button"
-												onClick={() => deleteSenior(senior.id)}
-												className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2">
-												Delete
-											</button>
-										</td>
-									</tr>
-								))}
-								{seniors.length === 0 && (
-									<tr>
-										<td
-											colSpan="4"
-											className="text-center py-4 text-gray-500">
-											No Senior records found.
-										</td>
-									</tr>
-								)}
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+			<table className="w-full border-collapse border border-purple-500 mx-auto">
+				<thead>
+					<tr className="bg-purple-500 text-white">
+						<th className="py-2 px-4 text-left">Name</th>
+						<th className="py-2 px-4 text-left">Age</th>
+						<th className="py-2 px-4 text-left">Gender</th>
+						<th className="py-2 px-4 text-left">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{seniors.map((senior) => (
+						<tr
+							key={senior.id}
+							className="bg-white border-b border-purple-500">
+							<td className="py-2 px-4">{senior.people}</td>
+							<td className="py-2 px-4">{senior.age}</td>
+							<td className="py-2 px-4">{senior.gender}</td>
+							<td className="py-2 px-4">
+								<button
+									type="button"
+									onClick={() => deleteSenior(senior.id)}
+									className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1">
+									Delete
+								</button>
+							</td>
+						</tr>
+					))}
+					{seniors.length === 0 && (
+						<tr className="bg-white border-b border-purple-500">
+							<td
+								colSpan="4"
+								className="py-4 px-4 text-center text-gray-500">
+								No Senior records found.
+							</td>
+						</tr>
+					)}
+				</tbody>
+			</table>
 		</section>
 	);
 }

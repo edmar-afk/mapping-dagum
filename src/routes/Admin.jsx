@@ -16,7 +16,7 @@ function Admin() {
 				data-drawer-toggle="default-sidebar"
 				aria-controls="default-sidebar"
 				type="button"
-				className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600">
+				className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600">
 				<span className="sr-only">Open sidebar</span>
 				<svg
 					className="w-6 h-6"
@@ -35,13 +35,13 @@ function Admin() {
 				id="default-sidebar"
 				className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
 				aria-label="Sidebar">
-				<div className="h-full px-3 py-4 overflow-y-auto bg-gray-50">
+				<div className="h-full px-3 py-4 overflow-y-auto bg-purple-800">
 					<ul className="space-y-2 font-medium">
 						<li>
 							<a
 								href="#"
 								onClick={() => setActiveTab("dashboard")}
-								className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+								className="flex items-center p-2 text-white rounded-lg hover:bg-purple-900 group">
 								<span className="ms-3">Dashboard</span>
 							</a>
 						</li>
@@ -50,8 +50,8 @@ function Admin() {
 							<a
 								href="#"
 								onClick={() => setActiveTab("pwd")}
-								className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-								<AccessibleIcon />
+								className="flex items-center p-2 text-white rounded-lg hover:bg-purple-900 group">
+								
 								<span className="flex-1 ms-3 whitespace-nowrap">PWD</span>
 							</a>
 						</li>
@@ -59,8 +59,8 @@ function Admin() {
 							<a
 								href="#"
 								onClick={() => setActiveTab("seniors")}
-								className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-								<ElderlyIcon />
+								className="flex items-center p-2 text-white rounded-lg hover:bg-purple-900 group">
+							
 								<span className="flex-1 ms-3 whitespace-nowrap">Seniors</span>
 							</a>
 						</li>
@@ -68,8 +68,8 @@ function Admin() {
 							<a
 								href="#"
 								onClick={() => setActiveTab("infras")}
-								className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-								<ApartmentIcon />
+								className="flex items-center p-2 text-white rounded-lg hover:bg-purple-900 group">
+								
 								<span className="flex-1 ms-3 whitespace-nowrap">Infrastructure</span>
 							</a>
 						</li>
@@ -77,8 +77,8 @@ function Admin() {
 							<a
 								href="#"
 								onClick={() => setActiveTab("household")}
-								className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-								<PeopleIcon />
+								className="flex items-center p-2 text-white rounded-lg hover:bg-purple-900 group">
+								
 								<span className="flex-1 ms-3 whitespace-nowrap">Household</span>
 							</a>
 						</li>
@@ -86,14 +86,14 @@ function Admin() {
 							<a
 								href="#"
 								onClick={() => setActiveTab("householdMembers")}
-								className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-								<PeopleIcon />
+								className="flex items-center p-2 text-white rounded-lg hover:bg-purple-900 group">
+							
 								<span className="flex-1 ms-3 whitespace-nowrap">Household Members</span>
 							</a>
 						</li>
-						<li className="mt-24 p-2 text-red-400 font-bold">
+						<li className="p-2 text-white font-bold">
 							<Link to={"/"}>
-								<LogoutIcon />
+								
 								<span className="flex-1 ms-3 whitespace-nowrap">Logout</span>
 							</Link>
 						</li>
@@ -101,11 +101,8 @@ function Admin() {
 				</div>
 			</aside>
 
-			<div className="p-4 sm:ml-64">
-				<div className="">
-					<p className="text-2xl font-bold">Poblacion Bayog, Zamboanga del Sur</p>
-				</div>
-
+			<div className="p-4 sm:ml-64 bg-gray-50 h-screen">
+				
 				{activeTab === "dashboard" && <Dashboard />}
 				{activeTab === "pwd" && <Pwd />}
 				{activeTab === "seniors" && <Seniors />}

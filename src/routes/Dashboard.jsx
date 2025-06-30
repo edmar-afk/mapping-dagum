@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";import api from "../assets/api";
-import AccessibleIcon from "@mui/icons-material/Accessible";
-import PeopleIcon from "@mui/icons-material/People";
-import ElderlyWomanIcon from "@mui/icons-material/ElderlyWoman";
-import ApartmentIcon from "@mui/icons-material/Apartment";
+
 function Dashboard() {
 	const [stats, setStats] = useState({
 		total_pwds: 0,
@@ -18,52 +15,41 @@ function Dashboard() {
 	}, []);
 
 	return (
-		<section className="text-gray-700 body-font">
-			<div className="container px-5 py-24 mx-auto">
-				<div className="flex flex-wrap -m-4 text-center">
-					<div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-						<div className="border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
-							<AccessibleIcon
-								className="text-indigo-500 w-12 h-12 mb-3"
-								style={{ fontSize: 48 }}
-							/>
-							<h2 className="title-font font-medium text-3xl text-gray-900">{stats.total_pwds}</h2>
-							<p className="leading-relaxed">PWDs</p>
-						</div>
-					</div>
-					<div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-						<div className="border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
-							<ElderlyWomanIcon
-								className="text-indigo-500 w-12 h-12 mb-3"
-								style={{ fontSize: 48 }}
-							/>
-							<h2 className="title-font font-medium text-3xl text-gray-900">{stats.total_seniors}</h2>
-							<p className="leading-relaxed">Senior Citizens</p>
-						</div>
-					</div>
-					<div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-						<div className="border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
-							<PeopleIcon
-								className="text-indigo-500 w-12 h-12 mb-3"
-								style={{ fontSize: 48 }}
-							/>
-							<h2 className="title-font font-medium text-3xl text-gray-900">{stats.total_households}</h2>
-							<p className="leading-relaxed">Households</p>
-						</div>
-					</div>
-					<div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-						<div className="border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
-							<ApartmentIcon
-								className="text-indigo-500 w-12 h-12 mb-3"
-								style={{ fontSize: 48 }}
-							/>
-							<h2 className="title-font font-medium text-3xl text-gray-900">{stats.total_infrastructures}</h2>
-							<p className="leading-relaxed">Infrastructures</p>
+		<div className="bg-gray-50 py-16 pt-32">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="max-w-4xl mx-auto text-center">
+					<h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Dagum Mapping Dashboard</h2>
+					<p className="mt-3 text-xl text-gray-500 sm:mt-4">Latest statistics on community programs and development.</p>
+				</div>
+			</div>
+			<div className="mt-10 pb-1">
+				<div className="relative">
+					<div className="absolute inset-0 h-1/2 bg-gray-50"></div>
+					<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+						<div className="max-w-4xl mx-auto">
+							<dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-4">
+								<div className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
+									<dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">PWDs</dt>
+									<dd className="order-1 text-5xl font-extrabold text-gray-700">{stats.total_pwds}</dd>
+								</div>
+								<div className="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
+									<dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">Senior Citizens</dt>
+									<dd className="order-1 text-5xl font-extrabold text-gray-700">{stats.total_seniors}</dd>
+								</div>
+								<div className="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
+									<dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">Households</dt>
+									<dd className="order-1 text-5xl font-extrabold text-gray-700">{stats.total_households}</dd>
+								</div>
+								<div className="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
+									<dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">Infrastructures</dt>
+									<dd className="order-1 text-5xl font-extrabold text-gray-700">{stats.total_infrastructures}</dd>
+								</div>
+							</dl>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 }
 

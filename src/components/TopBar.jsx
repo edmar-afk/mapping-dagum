@@ -61,7 +61,7 @@ function TopBar({ isVisible, onCategorySelect, activeCategory }) {
 
 	return (
 		<div
-			className={`bg-purple-100 px-12 py-6 absolute flex flex-row items-center justify-center top-0 left-0 w-[500px] flex-wrap z-[9999] transition-transform duration-300 ${
+			className={`bg-purple-100 px-12 py-6 absolute flex flex-row items-center justify-center top-0 left-0 w-[500px] flex-wrap z-[999] transition-transform duration-300 ${
 				isVisible ? "scale-100" : "scale-0"
 			}`}>
 			{categories.map((cat) => (
