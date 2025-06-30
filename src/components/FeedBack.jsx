@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Box, Button, Typography, TextField } from "@mui/material";
 import api from "../assets/api";
 import Swal from "sweetalert2";
+import Login from "./admin/Login";
 const style = {
 	position: "absolute",
 	top: "50%",
@@ -37,24 +38,20 @@ function FeedBack() {
 
 	return (
 		<>
-			<Button
-				variant="contained"
-				color="secondary"
-				onClick={handleOpen}
-				sx={{
-					position: "fixed",
-					top: 16,
-					right: 16,
-					zIndex: 99999,
-				}}>
-				Send Feedback
-			</Button>
-
+			<div className="flex flex-row fixed top-8 right-8 z-[9999]">
+				<Login />
+				<Button
+					variant="contained"
+					color="secondary"
+					onClick={handleOpen}
+					sx={{ ml: 2 }}>
+					Send Feedback
+				</Button>
+			</div>
 			<Modal
 				open={open}
 				onClose={handleClose}>
 				<Box sx={style}>
-					
 					<form onSubmit={handleSubmit}>
 						<TextField
 							fullWidth

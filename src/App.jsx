@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./routes/Home";
-
+import Admin from "./routes/Admin";
 function App() {
 	return (
 		<BrowserRouter>
@@ -8,6 +8,10 @@ function App() {
 				<Route
 					path="/"
 					element={<Home />}
+				/>
+				<Route
+					path="/admin"
+					element={<Admin />}
 				/>
 				{/* Optional: Redirect unknown routes */}
 				<Route
