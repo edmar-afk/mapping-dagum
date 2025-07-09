@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";import api from "../assets/api";
-import AddPwd from "../components/admin/AddPwd";
+import React, { useEffect, useState } from "react";import api from "../assets/api";import AddPwd from "../components/admin/AddPwd";
 
 function Pwd() {
 	const [pwds, setPwds] = useState([]);
@@ -15,7 +14,7 @@ function Pwd() {
 
 	const deletePwd = async (id) => {
 		try {
-			await api.delete(`/pwds/${id}/`);
+			await api.delete(`/api/pwd/delete/${id}/`);
 			setPwds((prev) => prev.filter((p) => p.id !== id));
 		} catch (err) {
 			console.error("Failed to delete PWD:", err);
