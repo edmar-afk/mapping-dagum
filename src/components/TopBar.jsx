@@ -37,16 +37,16 @@ function TopBar({ isVisible, onCategorySelect, activeCategory }) {
 				/>
 			),
 		},
-		// {
-		// 	label: "Households",
-		// 	key: "households",
-		// 	icon: (
-		// 		<HouseIcon
-		// 			fontSize="small"
-		// 			className="mr-1"
-		// 		/>
-		// 	),
-		// },
+		{
+			label: "Households",
+			key: "households",
+			icon: (
+				<HouseIcon
+					fontSize="small"
+					className="mr-1"
+				/>
+			),
+		},
 		{
 			label: "Feedbacks",
 			key: "feedbacks",
