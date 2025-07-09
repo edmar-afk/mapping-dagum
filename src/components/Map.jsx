@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
+import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import api from "../assets/api";
@@ -123,7 +122,7 @@ function Map() {
 											</>
 										) : activeCategory === "households" ? (
 											<>
-												Family Name: {item.family_name} <br />
+												<b>{item.family_name} FAMILY</b> <br />
 												Members:
 												<ul className="list-disc ml-4">
 													{item.members.map((member, idx) => (
