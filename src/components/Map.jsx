@@ -1,11 +1,10 @@
-import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import api from "../assets/api";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import FeedBack from "./FeedBack";
-
+import Households from "./pins/Households";
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
 	iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
@@ -97,7 +96,7 @@ function Map() {
 											e.target.closePopup();
 										},
 									}}>
-									<Popup>
+									<Popup maxWidth={800}>
 										{activeCategory === "pwds" ? (
 											<>
 												Name: {item.people} <br />
@@ -122,15 +121,60 @@ function Map() {
 											</>
 										) : activeCategory === "households" ? (
 											<>
-												<b>{item.family_name} FAMILY</b> <br />
-												Members:
-												<ul className="list-disc ml-4">
-													{item.members.map((member, idx) => (
-														<li key={idx}>
-															{member.name} – {member.age} yrs – {member.role}
-														</li>
-													))}
-												</ul>
+												<div className="space-y-10">
+													<div className="relative shadow-md sm:rounded-lg">
+														<h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
+															{item.family_name} Family
+														</h2>
+
+														{item.members && item.members.length > 0 ? (
+															<table className="w-full text-sm text-left rtl:text-right text-gray-500">
+																<thead className="text-xs text-gray-700 uppercase">
+																	<tr>
+																		<th
+																			scope="col"
+																			className="px-6 py-3 bg-gray-50">
+																			Name
+																		</th>
+																		<th
+																			scope="col"
+																			className="px-6 py-3">
+																			Age
+																		</th>
+																		<th
+																			scope="col"
+																			className="px-6 py-3 bg-gray-50">
+																			Role
+																		</th>
+																		<th
+																			scope="col"
+																			className="px-6 py-3 bg-gray-50">
+																			Occupation
+																		</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	{item.members.map((member, i) => (
+																		<tr
+																			key={i}
+																			className="border-b border-gray-200">
+																			<th
+																				scope="row"
+																				className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
+																				{member.name}
+																			</th>
+																			<td className="px-6 py-4">{member.age}</td>
+																			<td className="px-6 py-4 bg-gray-50">{member.role}</td>
+																			<td className="px-6 py-4 bg-gray-50">{member.occupation}</td>
+																		</tr>
+																	))}
+																</tbody>
+															</table>
+														) : (
+															<p className="text-gray-500 italic text-center">No family members found.</p>
+														)}
+													</div>
+												</div>
 											</>
 										) : (
 											"Unknown category"

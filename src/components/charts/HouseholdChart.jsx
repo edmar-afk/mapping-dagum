@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";import api from "../../assets/api";
-
-function HouseholdChart() {
+import { useState, useEffect } from "react";import api from "../../assets/api";function HouseholdChart() {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -47,6 +45,11 @@ function HouseholdChart() {
 											className="px-6 py-3 bg-gray-50">
 											Role
 										</th>
+										<th
+											scope="col"
+											className="px-6 py-3 bg-gray-50">
+											Occupation
+										</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -61,6 +64,7 @@ function HouseholdChart() {
 											</th>
 											<td className="px-6 py-4">{member.age}</td>
 											<td className="px-6 py-4 bg-gray-50">{member.role}</td>
+											<td className="px-6 py-4 bg-gray-50">{member.occupation}</td>
 										</tr>
 									))}
 								</tbody>

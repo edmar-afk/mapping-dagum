@@ -15,6 +15,7 @@ function AddMembers() {
 		age: "",
 		role: "",
 		household: "",
+		occupation: "",
 	});
 	const [error, setError] = useState("");
 
@@ -33,7 +34,7 @@ function AddMembers() {
 	};
 
 	const handleClose = () => {
-		setFormData({ name: "", age: "", role: "", household: "" });
+		setFormData({ name: "", age: "", role: "", household: "", occupation: "" });
 		setError("");
 		setOpen(false);
 	};
@@ -148,6 +149,22 @@ function AddMembers() {
 												</option>
 											))}
 										</select>
+									</div>
+
+									<div className="relative">
+										<input
+											type="text"
+											name="occupation"
+											value={formData.occupation}
+											onChange={handleChange}
+											placeholder="Occupation"
+											className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-purple-600"
+										/>
+										<label
+											htmlFor="occupation"
+											className="absolute left-0 -top-3.5 text-sm text-gray-600 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 transition-all peer-focus:-top-3.5 peer-focus:text-sm">
+											Occupation
+										</label>
 									</div>
 
 									{error && <p className="text-sm text-red-500">{error}</p>}

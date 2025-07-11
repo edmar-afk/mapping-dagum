@@ -43,8 +43,8 @@ function Sidebar({ lat, lng, isVisible, categoryKey }) {
 	return (
 		<div
 			className={`fixed top-0 z-[999] h-screen bg-white p-4 shadow-lg transition-all duration-300`}
-			style={{ width: isResizing ? "501px" : "500px" }}>
-			<div className="h-[calc(100%-56px)] overflow-y-auto overflow-x-hidden pt-8 space-y-4">
+			style={{ width: isResizing ? "401px" : "400px" }}>
+			<div className="h-[calc(100%-56px)] overflow-y-auto overflow-x-hidden pt-24 space-y-4">
 				{categoryKey === "pwds" ? (
 					<PwdCharts />
 				) : categoryKey === "infras" ? (

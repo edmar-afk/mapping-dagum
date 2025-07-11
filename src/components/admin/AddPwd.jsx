@@ -14,12 +14,19 @@ function AddPwd() {
 		age: "",
 		gender: "",
 		location: "",
+		description: "",
 	});
 	const [error, setError] = useState("");
 
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => {
-		setFormData({ people: "", age: "", gender: "", location: "" });
+		setFormData({
+			people: "",
+			age: "",
+			gender: "",
+			location: "",
+			description: "",
+		});
 		setError("");
 		setOpen(false);
 	};
@@ -130,6 +137,22 @@ function AddPwd() {
 												htmlFor="location"
 												className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
 												Location
+											</label>
+										</div>
+										<div className="relative">
+											<input
+												autoComplete="off"
+												type="text"
+												name="description"
+												value={formData.description}
+												onChange={handleChange}
+												placeholder="Description"
+												className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-600"
+											/>
+											<label
+												htmlFor="description"
+												className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+												Description
 											</label>
 										</div>
 

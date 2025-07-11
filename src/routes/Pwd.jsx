@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";import api from "../assets/api";import AddPwd from "../components/admin/AddPwd";
-
-function Pwd() {
+import React, { useEffect, useState } from "react";import api from "../assets/api";import AddPwd from "../components/admin/AddPwd";function Pwd() {
 	const [pwds, setPwds] = useState([]);
 
 	const fetchPwds = async () => {
@@ -41,6 +39,7 @@ function Pwd() {
 						<th className="py-2 px-4 text-left">Name</th>
 						<th className="py-2 px-4 text-left">Age</th>
 						<th className="py-2 px-4 text-left">Gender</th>
+						<th className="py-2 px-4 text-left">Description</th>
 						<th className="py-2 px-4 text-left">Actions</th>
 					</tr>
 				</thead>
@@ -52,6 +51,7 @@ function Pwd() {
 							<td className="py-2 px-4">{pwd.people}</td>
 							<td className="py-2 px-4">{pwd.age}</td>
 							<td className="py-2 px-4">{pwd.gender}</td>
+							<td className="py-2 px-4">{pwd.description}</td>
 							<td className="py-2 px-4">
 								<button
 									type="button"
