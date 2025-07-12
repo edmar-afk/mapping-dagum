@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";import api from "../assets/api";import AddMembers from "../components/admin/AddMembers";
-
-function HouseholdMembers() {
-	const [households, setHouseholds] = useState([]);
+import { useEffect, useState } from "react";import api from "../assets/api";import AddMembers from "../components/admin/AddMembers";function HouseholdMembers() {	const [households, setHouseholds] = useState([]);
 
 	const fetchHouseholds = async () => {
 		try {
@@ -34,6 +31,7 @@ function HouseholdMembers() {
 						<th className="py-2 px-4 text-left">Member Name</th>
 						<th className="py-2 px-4 text-left">Age</th>
 						<th className="py-2 px-4 text-left">Occupation</th>
+						<th className="py-2 px-4 text-left">Source of Income</th>
 						<th className="py-2 px-4 text-left">Role</th>
 					</tr>
 				</thead>
@@ -48,6 +46,7 @@ function HouseholdMembers() {
 									<td className="py-2 px-4">{member.name}</td>
 									<td className="py-2 px-4">{member.age}</td>
 									<td className="py-2 px-4">{member.occupation}</td>
+									<td className="py-2 px-4">{member.source_income}</td>
 									<td className="py-2 px-4">{member.role}</td>
 								</tr>
 							))

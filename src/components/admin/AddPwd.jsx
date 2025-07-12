@@ -15,6 +15,7 @@ function AddPwd() {
 		gender: "",
 		location: "",
 		description: "",
+		disability_type: "",
 	});
 	const [error, setError] = useState("");
 
@@ -26,6 +27,7 @@ function AddPwd() {
 			gender: "",
 			location: "",
 			description: "",
+			disability_type: "",
 		});
 		setError("");
 		setOpen(false);
@@ -40,7 +42,13 @@ function AddPwd() {
 
 	const handleSubmit = async () => {
 		try {
-			const response = await api.post("/api/pwds/", formData);
+			const payload = {
+				...formData,
+				purok: "no data",
+				status: "no data",
+			};
+
+			const response = await api.post("/api/pwds/", payload);
 			console.log("Added:", response.data);
 			handleClose();
 		} catch (error) {
@@ -62,52 +70,43 @@ function AddPwd() {
 				onClose={handleClose}
 				sx={style}
 				BackdropProps={{
-					sx: {
-						backgroundColor: "rgba(0, 0, 0, 0.4)",
-					},
+					sx: { backgroundColor: "rgba(0, 0, 0, 0.4)" },
 				}}>
 				<div className="min-h-screen py-6 flex flex-col justify-center sm:py-12 z-[999999]">
 					<div className="relative py-3 sm:max-w-xl sm:mx-auto w-full">
 						<div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
 						<div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
 							<div className="max-w-md mx-auto">
-								<div>
-									<h1 className="text-2xl font-semibold text-center">Add PWD</h1>
-								</div>
+								<h1 className="text-2xl font-semibold text-center">Add PWD</h1>
 								<div className="divide-y divide-gray-200">
-									<div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-										<div className="relative">
-											<input
-												autoComplete="off"
-												type="text"
-												name="people"
-												value={formData.people}
-												onChange={handleChange}
-												placeholder="Full Name"
-												className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-600"
-											/>
-											<label
-												htmlFor="people"
-												className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-												Full Name
-											</label>
-										</div>
-										<div className="relative">
-											<input
-												autoComplete="off"
-												type="number"
-												name="age"
-												value={formData.age}
-												onChange={handleChange}
-												placeholder="Age"
-												className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-600"
-											/>
-											<label
-												htmlFor="age"
-												className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-												Age
-											</label>
-										</div>
+									<div className="py-8 space-y-4 text-gray-700">
+										{[
+											{ name: "people", label: "Full Name", type: "text" },
+											{ name: "age", label: "Age", type: "number" },
+											{ name: "location", label: "Location", type: "text" },
+											{ name: "description", label: "Description", type: "text" },
+											{ name: "disability_type", label: "Disability Type", type: "text" },
+										].map(({ name, label, type }) => (
+											<div
+												key={name}
+												className="relative">
+												<input
+													autoComplete="off"
+													type={type}
+													name={name}
+													value={formData[name]}
+													onChange={handleChange}
+													placeholder={label}
+													className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-600"
+												/>
+												<label
+													htmlFor={name}
+													className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+													{label}
+												</label>
+											</div>
+										))}
+
 										<div className="relative">
 											<select
 												name="gender"
@@ -122,38 +121,6 @@ function AddPwd() {
 												<option value="Male">Male</option>
 												<option value="Female">Female</option>
 											</select>
-										</div>
-										<div className="relative">
-											<input
-												autoComplete="off"
-												type="text"
-												name="location"
-												value={formData.location}
-												onChange={handleChange}
-												placeholder="Location"
-												className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-600"
-											/>
-											<label
-												htmlFor="location"
-												className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-												Location
-											</label>
-										</div>
-										<div className="relative">
-											<input
-												autoComplete="off"
-												type="text"
-												name="description"
-												value={formData.description}
-												onChange={handleChange}
-												placeholder="Description"
-												className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-600"
-											/>
-											<label
-												htmlFor="description"
-												className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
-												Description
-											</label>
 										</div>
 
 										{error && <p className="text-sm text-red-500 mt-1">{error}</p>}

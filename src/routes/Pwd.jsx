@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from "react";import api from "../assets/api";import AddPwd from "../components/admin/AddPwd";function Pwd() {
-	const [pwds, setPwds] = useState([]);
-
-	const fetchPwds = async () => {
-		try {
+import React, { useEffect, useState } from "react";import api from "../assets/api";import AddPwd from "../components/admin/AddPwd";function Pwd() {	const [pwds, setPwds] = useState([]);	const fetchPwds = async () => {		try {
 			const res = await api.get("/api/pwds/");
 			setPwds(res.data);
 		} catch (err) {
@@ -39,6 +35,7 @@ import React, { useEffect, useState } from "react";import api from "../assets/ap
 						<th className="py-2 px-4 text-left">Name</th>
 						<th className="py-2 px-4 text-left">Age</th>
 						<th className="py-2 px-4 text-left">Gender</th>
+						<th className="py-2 px-4 text-left">Disability Type</th>
 						<th className="py-2 px-4 text-left">Description</th>
 						<th className="py-2 px-4 text-left">Actions</th>
 					</tr>
@@ -51,6 +48,7 @@ import React, { useEffect, useState } from "react";import api from "../assets/ap
 							<td className="py-2 px-4">{pwd.people}</td>
 							<td className="py-2 px-4">{pwd.age}</td>
 							<td className="py-2 px-4">{pwd.gender}</td>
+							<td className="py-2 px-4">{pwd.disability_type}</td>
 							<td className="py-2 px-4">{pwd.description}</td>
 							<td className="py-2 px-4">
 								<button

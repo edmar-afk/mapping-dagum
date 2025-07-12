@@ -16,6 +16,7 @@ function AddMembers() {
 		role: "",
 		household: "",
 		occupation: "",
+		source_income: "",
 	});
 	const [error, setError] = useState("");
 
@@ -34,7 +35,14 @@ function AddMembers() {
 	};
 
 	const handleClose = () => {
-		setFormData({ name: "", age: "", role: "", household: "", occupation: "" });
+		setFormData({
+			name: "",
+			age: "",
+			role: "",
+			household: "",
+			occupation: "",
+			source_income: "",
+		});
 		setError("");
 		setOpen(false);
 	};
@@ -69,9 +77,7 @@ function AddMembers() {
 				onClose={handleClose}
 				sx={style}
 				BackdropProps={{
-					sx: {
-						backgroundColor: "rgba(0, 0, 0, 0.9)",
-					},
+					sx: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
 				}}>
 				<div className="min-h-screen py-6 flex flex-col justify-center sm:py-12 z-[999999]">
 					<div className="relative py-3 sm:max-w-xl sm:mx-auto w-full">
@@ -80,37 +86,30 @@ function AddMembers() {
 							<div className="max-w-md mx-auto">
 								<h1 className="text-2xl font-semibold text-center mb-4">Add Household Member</h1>
 								<div className="space-y-4 text-gray-700 sm:text-lg">
-									<div className="relative">
-										<input
-											type="text"
-											name="name"
-											value={formData.name}
-											onChange={handleChange}
-											placeholder="Name"
-											className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-purple-600"
-										/>
-										<label
-											htmlFor="name"
-											className="absolute left-0 -top-3.5 text-sm text-gray-600 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 transition-all peer-focus:-top-3.5 peer-focus:text-sm">
-											Name
-										</label>
-									</div>
-
-									<div className="relative">
-										<input
-											type="number"
-											name="age"
-											value={formData.age}
-											onChange={handleChange}
-											placeholder="Age"
-											className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-purple-600"
-										/>
-										<label
-											htmlFor="age"
-											className="absolute left-0 -top-3.5 text-sm text-gray-600 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 transition-all peer-focus:-top-3.5 peer-focus:text-sm">
-											Age
-										</label>
-									</div>
+									{[
+										{ name: "name", label: "Name", type: "text" },
+										{ name: "age", label: "Age", type: "number" },
+										{ name: "occupation", label: "Occupation", type: "text" },
+										{ name: "source_income", label: "Source of Income", type: "text" },
+									].map(({ name, label, type }) => (
+										<div
+											key={name}
+											className="relative">
+											<input
+												type={type}
+												name={name}
+												value={formData[name]}
+												onChange={handleChange}
+												placeholder={label}
+												className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-purple-600"
+											/>
+											<label
+												htmlFor={name}
+												className="absolute left-0 -top-3.5 text-sm text-gray-600 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 transition-all peer-focus:-top-3.5 peer-focus:text-sm">
+												{label}
+											</label>
+										</div>
+									))}
 
 									<div className="relative">
 										<select
@@ -149,22 +148,6 @@ function AddMembers() {
 												</option>
 											))}
 										</select>
-									</div>
-
-									<div className="relative">
-										<input
-											type="text"
-											name="occupation"
-											value={formData.occupation}
-											onChange={handleChange}
-											placeholder="Occupation"
-											className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-purple-600"
-										/>
-										<label
-											htmlFor="occupation"
-											className="absolute left-0 -top-3.5 text-sm text-gray-600 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 transition-all peer-focus:-top-3.5 peer-focus:text-sm">
-											Occupation
-										</label>
 									</div>
 
 									{error && <p className="text-sm text-red-500">{error}</p>}

@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";import api from "../../assets/api";function HouseholdChart() {
-	const [data, setData] = useState([]);
-
-	useEffect(() => {
+import { useState, useEffect } from "react";import api from "../../assets/api";function HouseholdChart() {	const [data, setData] = useState([]);	useEffect(() => {
 		const fetchHousehold = async () => {
 			try {
 				const response = await api.get(`/api/households/`);
@@ -50,6 +47,11 @@ import { useState, useEffect } from "react";import api from "../../assets/api";f
 											className="px-6 py-3 bg-gray-50">
 											Occupation
 										</th>
+										<th
+											scope="col"
+											className="px-6 py-3 bg-gray-50">
+											Source of Income
+										</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -65,6 +67,7 @@ import { useState, useEffect } from "react";import api from "../../assets/api";f
 											<td className="px-6 py-4">{member.age}</td>
 											<td className="px-6 py-4 bg-gray-50">{member.role}</td>
 											<td className="px-6 py-4 bg-gray-50">{member.occupation}</td>
+											<td className="px-6 py-4 bg-gray-50">{member.source_income}</td>
 										</tr>
 									))}
 								</tbody>

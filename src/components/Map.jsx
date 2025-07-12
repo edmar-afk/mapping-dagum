@@ -1,12 +1,4 @@
-import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import api from "../assets/api";
-import Sidebar from "./Sidebar";
-import TopBar from "./TopBar";
-import FeedBack from "./FeedBack";
-import Households from "./pins/Households";
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
+import { useState } from "react";import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";import "leaflet/dist/leaflet.css";import L from "leaflet";import api from "../assets/api";import Sidebar from "./Sidebar";import TopBar from "./TopBar";import FeedBack from "./FeedBack";import Households from "./pins/Households";delete L.Icon.Default.prototype._getIconUrl;L.Icon.Default.mergeOptions({
 	iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
 	iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
 	shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
@@ -102,6 +94,9 @@ function Map() {
 												Name: {item.people} <br />
 												Age: {item.age} <br />
 												Gender: {item.gender}
+												<br />
+												Description: "{item.description}" <br />
+												Disability Type: {item.disability_type} <br />
 											</>
 										) : activeCategory === "infras" ? (
 											<>
@@ -151,6 +146,11 @@ function Map() {
 																			className="px-6 py-3 bg-gray-50">
 																			Occupation
 																		</th>
+																		<th
+																			scope="col"
+																			className="px-6 py-3 bg-gray-50">
+																			Source of Income
+																		</th>
 																	</tr>
 																</thead>
 																<tbody>
@@ -166,6 +166,7 @@ function Map() {
 																			<td className="px-6 py-4">{member.age}</td>
 																			<td className="px-6 py-4 bg-gray-50">{member.role}</td>
 																			<td className="px-6 py-4 bg-gray-50">{member.occupation}</td>
+																			<td className="px-6 py-4 bg-gray-50">{member.source_income}</td>
 																		</tr>
 																	))}
 																</tbody>
